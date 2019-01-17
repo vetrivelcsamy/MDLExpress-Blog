@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <main class="demo-main mdl-layout__content">
+          <div class="demo-container-index mdl-grid">
+                  <div class="mdl-grid">
+                  <% Blogger.forEach(function(booker){ %>
+                     <div class="mdl-cell mdl-cell--4-col">
+                        <h5><%= booker.title %></h5>
+                        <img src="<%= booker.image %>" width="350px">
+                        <span class="mdl-chip">
+                        <span class="mdl-chip__text"><%= booker.created.toDateString() %></span>
+                        </span>
+                        <p><%= booker.para.substring(0, 100) %></p>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="/blogs/<%= booker._id %>">Read More</a>
+                    </div>
+                  <% }) %>
+             </div>
+      </main>
+    </div>
+
+<% include ./partials/footer %>
+

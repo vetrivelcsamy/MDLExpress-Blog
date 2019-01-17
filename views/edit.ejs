@@ -1,0 +1,43 @@
+<% include ./partials/header %>
+
+ <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+         <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+        <span class="mdl-chip">
+         <span class="mdl-chip__text"><strong>EDIT:</strong> <%= Blog.title %></span>
+       </span>
+       <br>
+  <!-- Numeric Textfield with Floating Label -->
+  <form action="/blogs/<%= Blog._id %>?_method=PUT" method="POST">
+      <div class="mdl-textfield mdl-js-textfield" style="width:100%">
+      <input class="mdl-textfield__input" type="text" name="blog[title]" value="<%= Blog.title %>" id="user" pattern="[A-Z,a-z, ]*">
+      <label class="mdl-textfield__label" for="user">Title</label>
+      <span class="mdl-textfield__error">Letters and spaces only</span>
+      </div>
+      <br>
+   <!--url pattern-->
+    <div class="mdl-textfield mdl-js-textfield" style="width:100%">
+       <input class="mdl-textfield__input" type="url" name="blog[image]" value="<%= Blog.image %>" id="myURL">
+       <label class="mdl-textfield__label" for="myURL">Image url</label>
+       <span class="mdl-textfield__error">Enter the problem website address</span>
+   </div>
+        <br>
+   <!-- txt -->
+     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%">
+         <textarea class="demo-txtarea mdl-textfield__input" name="blog[para]"><%= Blog.para %></textarea>
+         <label class="mdl-textfield__label" for="sample3">Write About Your Blog ...</label>
+    </div>
+        <br>
+      <!-- Colored raised button -->
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">edit</button>
+   </form>
+       </div>
+          </div>
+             </div>
+                </div>
+                   </main>
+
+    
+<% include ./partials/footer %>

@@ -1,0 +1,37 @@
+<% include ./partials/header %>
+<!-- -->
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+             <div class="demo-crumbs mdl-color-text--grey-500">
+                 <span><i id="demo-time-icon" class="material-icons">access_time</i> <%= Blog.created.toDateString() %></span>
+                 <hr>
+                 </div>
+               <h3><%= Blog.title %></h3>
+              <p>
+                  <img class="demo-para-img" src="<%= Blog.image %>" alt="<%= Blog.title %>">
+                <%= Blog.para %>
+              </p>
+               <!-- add -->
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+      <a href="#Edit" class="mdl-tabs__tab is-active">Edit</a>
+      <a href="#Delete" class="mdl-tabs__tab">Delete</a>
+  </div>
+
+  <div class="mdl-tabs__panel is-active" id="Edit">
+    <a class="mdl-button mdl-js-button mdl-button--primary" href="/blogs/<%= Blog._id %>/edit">Edit</a>
+  </div>
+  <div class="mdl-tabs__panel" id="Delete">
+   <form  id="delete-form" action="/blogs/<%= Blog._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--accent">Delete</button>
+    </form>
+  </div>
+          </div>
+      </div>
+        </div>
+    </div>
+    
+<% include ./partials/footer %>
